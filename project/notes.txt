@@ -1,0 +1,112 @@
+
+
+
+ <a href="dogs.html" class="button">Buddies</a>
+    <a href="cats.html" class="button">cats</a>
+
+.button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  color: white;
+  background: #007bff;
+  text-decoration:dotted;
+  border-radius: 5px;
+}
+
+
+
+
+
+
+<?php
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Retrieve and sanitize input data
+    $fullName = htmlspecialchars(trim($_POST['fullName']));
+    $email = htmlspecialchars(trim($_POST['email']));
+    $phone = htmlspecialchars(trim($_POST['phone']));
+    $password = $_POST['password'];
+
+    // Check if all required fields are filled
+    if (empty($fullName) || empty($email) || empty($phone) || empty($password)) {
+        die('All fields are required.');
+    }
+
+    // Hash the password for security
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    // Database connection
+    $conn = new mysqli('localhost', 'root', '', 'paw');
+
+    // Check connection
+    if ($conn->connect_error) {
+        die('Connection Failed: ' . $conn->connect_error);
+    } else {
+        // Prepare the SQL statement
+        $stmt = $conn->prepare("INSERT INTO registration (fullName, email, phone, gender, password) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $fullName, $email, $phone, $gender, $hashedPassword);
+
+        // Execute the statement
+        if ($stmt->execute()) {
+            echo "Registration successful!";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+
+        // Close the statement and connection
+        $stmt->close();
+        $conn->close();
+    }
+} else {
+    echo "Invalid request method.";
+}
+?>
+
+
+
+adform.php------------------------------------------------------------------------------------------------------
+<?php
+require 'config.php'; // Include database connection file
+require('fpdf.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $petName = $_POST['petName'];
+    $fullName = $_POST['fullName'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
+
+    // Validate inputs
+    if (empty($fullName) || empty($email) || empty($phone) || empty($address)) {
+        echo "All fields are required!";
+        exit;
+    }
+
+    // Prepare the SQL statement
+    $sql = "INSERT INTO adoption_requests (petName, fullName, email, phone, address) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    
+    if (!$stmt) {
+        die("SQL Error: " . $conn->error);
+    }
+
+    // Bind parameters
+    $stmt->bind_param("sssss", $petName, $fullName, $email, $phone, $address);
+
+    // Execute the statement
+    if ($stmt->execute()) {
+        echo "Success! Your adoption request has been submitted.";
+        header("Location: login.html");
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+    
+    // Close the statement and connection
+    $stmt->close();
+    $conn->close();
+}
+?>

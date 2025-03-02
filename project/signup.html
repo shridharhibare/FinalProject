@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <link rel="stylesheet" href="css/signup.css">
+</head>
+<body>
+
+  <main class="back">
+  <form  id="signupForm" action="connect.php" method="POST">
+    <div class="container">
+      <h1>Sign Up</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+
+      <label for="fullName"><b>Full Name</b></label>
+      <input type="text" placeholder="Enter Full Name" id="fullName" name="fullName" required>
+
+      <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Enter Email" id="email" name="email" required>
+
+      <label for="phone"><b>Phone Number</b></label>
+      <input type="tel" placeholder="Enter Phone Number" id="phone" name="phone" required>
+
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" id="password" name="password" required>
+      
+      <p>Already have an account? <a href="login.html">Log in</a>.</p>
+
+      <div class="button-group">
+        <input type="submit" class="btn signupbtn" value="Register">
+        <button type="button" class="btn cancelbtn" onclick="window.location.href='index.php';">Cancel</button>
+      </div>
+    </div>
+  </form>
+  </main>     
+  </body>
+  </html> 

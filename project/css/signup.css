@@ -1,0 +1,119 @@
+/* Form Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+
+header nav ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background: #333;
+  }
+
+header nav ul li {
+    margin: 0 15px;
+  }
+  
+  header nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    transition: 0.2s ease;
+  }
+
+  header nav ul li a:hover {
+    background: #555;
+    border-radius: 5px;
+  }
+  
+  main {
+    background-color: darkolivegreen;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .container {
+    background-color: white;
+    background: rgba(255, 255, 255, 0.5); /* Increased transparency */
+    padding: 11px;
+    margin: 50px auto;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  input[type="text"], input[type="email"], input[type="password"], input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  label {
+    font-weight: bold;
+  }
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .signupbtn {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .signupbtn:hover {
+    background-color: #45a049;
+  }
+  .cancelbtn {
+    background-color: #f44336;
+    color: white;
+  }
+  .cancelbtn:hover {
+    background-color: #e41e26;
+  }
+
+  .back {
+    background-image: url('../images/pet.jpg'); 
+    height: auto; 
+    width: auto;
+    background-size: cover;
+    background-position: center;
+    padding: 50px 20px;
+  }
+  
+  footer {
+    background:#333; /* Dark green background */
+    color: white;
+    padding: 20px;
+  }
+  
+  .footer-section{
+    line-height: 0.5;
+  }
+  
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: lightyellow;
+  }
+  
+  .footer-section a {
+    color: lightyellow;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .footer-section a:hover {
+    text-decoration: underline;
+  }
